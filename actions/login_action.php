@@ -1,4 +1,8 @@
 <?php
+// Khởi tạo phiên làm việc
+session_start();
+require_once('../database.php');
+
 function loginAction($pdo) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = $_POST['username'];

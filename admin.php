@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: /baitap-mau/login.php");
     exit;
 }
 ?>
@@ -20,13 +20,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+ 
     <link rel="stylesheet" href="/baitap-mau/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="/baitap-mau/css/styles.css">
     <link rel="stylesheet" href="/baitap-mau/css/table.css">
@@ -43,10 +40,10 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Trang chủ </a>
                 </li>
                 <li>
-                    <a href="actions/logout_action.php"> <i class="menu-icon ti-user"></i>Sản phẩm</a>
+                    <a href="/baitap-mau/product/list.php"> <i class="menu-icon ti-bag"></i>Sản phẩm</a>
                 </li>
                 <li>
-                    <a href="actions/logout_action.php"> <i class="menu-icon ti-user"></i>Đăng xuất</a>
+                    <a href="/baitap-mau/actions/logout_action.php"> <i class="menu-icon ti-user"></i>Đăng xuất</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

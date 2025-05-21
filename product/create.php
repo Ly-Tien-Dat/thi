@@ -1,60 +1,49 @@
 <?php
-// require_once '../actions/list_action.php';
-
 ob_start();
 ?>
-<header>
-    <h1>Thêm mới người dùng</h1>
-</header>
-<div>
+
+<h1 class="title mb-10"><b>Thêm mới người dùng</b></h1>
+
+<div class="mb-10">
     <a href="index.php" class="mb-2 ws-btn w3-block w3-margin-top w3-padding-16">Quay lại</a>
 </div>
 <div class="form">
-    <form action="actions/create_action.php" class="test" method="POST" enctype="multipart/form-data">
-        <label for="name">Ảnh sản phẩm</label>
-        <div>
-            <img src="" id="preview" class="avatar" alt="Ảnh avatar">
+    <form action="/baitap-mau/actions/product/create_action.php" class="test" method="POST" enctype="multipart/form-data">
+        <div class="flex">
+            <div class="item mb-10">
+                <label for="name">Ảnh sản phẩm</label>
+                <input type="file" id="avatar" name="image" placeholder="Chọn ảnh.." required>
+            </div>
+
+            <div class="item mb-10">
+                <label for="name">Tên sản phẩm</label>
+                <input type="text" id="name" name="name" placeholder="Nhập tên sản phẩm..">
+            </div>
+
+            <div class="item mb-10">
+                <label for="price_old">Giá cũ sản phẩm</label>
+                <input type="number" id="price_old" name="price_old" placeholder="Nhập giá tiền..">
+            </div>
+
+            <div class="item mb-10">
+                <label for="price_new">Giá mới sản phẩm</label>
+                <input type="number" id="price_new" name="price_new" placeholder="Nhập giá tiền..">
+            </div>
+
+            <div class="item mb-10">
+                <label for="quantity">Số lượng còn hàng</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Nhập số lượng..">
+            </div>
         </div>
-        <input type="file" id="avatar" name="image" placeholder="Chọn ảnh.." required>
+        <div class="mb-10">
+            <label for="description">Mô tả sản phẩm</label>
+            <textarea name="description" id="description"></textarea>
+        </div>
 
-        <label for="name">Tên sản phẩm</label>
-        <input type="text" id="name" name="name" placeholder="Nhập tên sản phẩm..">
-
-        <label for="price">Giá cũ sản phẩm</label>
-        <input type="number" id="price_old" name="price_old" placeholder="Nhập giá tiền..">
-
-        <label for="price">Giá mới sản phẩm</label>
-        <input type="number" id="price" name="price" placeholder="Nhập giá tiền..">
-
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Nhập email..">
-
-        <label for="phone">Số điên thoại</label>
-        <input type="text" id="phone" name="phone" placeholder="Nhập số diện thoại..">
 
         <button type="submit" class="ws-btn">Thêm mới</button>
     </form>
 </div>
-
-
-<script>
-    const imageInput = document.getElementById('avatar');
-    const preview = document.getElementById('preview');
-
-    imageInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-            }
-
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
-
 
 <?php
 $content = ob_get_clean();
