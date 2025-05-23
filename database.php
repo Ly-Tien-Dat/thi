@@ -1,7 +1,7 @@
 <?php
 // Thông tin kết nối
 $host = 'localhost'; // host mặc định từ từ xampp
-$db   = 'baitap'; // Tên cơ sở dữ liệu
+$db   = 'dethi'; // Tên cơ sở dữ liệu
 $user = 'root'; // tài khoản đăng nhập cơ sở dữ liệu
 $pass = ''; // mật khẩu đăng nhập cơ sở dữ liệu
 

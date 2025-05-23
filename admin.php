@@ -1,10 +1,10 @@
 <?php
-
+$base = '/dethitotnghiep1';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /baitap-mau/login.php");
+    header("Location: $base/login.php");
     exit;
 }
 ?>
@@ -24,10 +24,10 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
  
-    <link rel="stylesheet" href="/baitap-mau/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="/baitap-mau/css/styles.css">
-    <link rel="stylesheet" href="/baitap-mau/css/table.css">
-    <link rel="stylesheet" href="/baitap-mau/css/form.css">
+    <link rel="stylesheet" href="<?=$base?>/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="<?=$base?>/css/styles.css">
+    <link rel="stylesheet" href="<?=$base?>/css/table.css">
+    <link rel="stylesheet" href="<?=$base?>/css/form.css">
 </head>
 
 <body>
@@ -40,10 +40,10 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Trang chủ </a>
                 </li>
                 <li>
-                    <a href="/baitap-mau/product/list.php"> <i class="menu-icon ti-bag"></i>Sản phẩm</a>
+                    <a href="<?=$base?>/user/list.php"> <i class="menu-icon ti-bag"></i>Quản lý người dùng</a>
                 </li>
                 <li>
-                    <a href="/baitap-mau/actions/logout_action.php"> <i class="menu-icon ti-user"></i>Đăng xuất</a>
+                    <a href="<?=$base?>/actions/logout_action.php"> <i class="menu-icon ti-user"></i>Đăng xuất</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -56,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="/baitap-mau/imgs/logo.png" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="<?=$base?>/imgs/logo.png" alt="Logo"></a>
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>

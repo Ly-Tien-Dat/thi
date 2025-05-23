@@ -1,4 +1,5 @@
 <?php
+$base = '/dethitotnghiep1';
 ob_start();
 ?>
 
@@ -8,7 +9,7 @@ ob_start();
     <a href="index.php" class="mb-2 ws-btn w3-block w3-margin-top w3-padding-16">Quay lại</a>
 </div>
 <div class="form">
-    <form action="/baitap-mau/actions/product/create_action.php" class="test" method="POST" enctype="multipart/form-data">
+    <form action="<?=$base?>/actions/product/create_action.php" class="test" method="POST" enctype="multipart/form-data">
         <div class="flex">
             <div class="item mb-10">
                 <label for="name">Ảnh sản phẩm</label>

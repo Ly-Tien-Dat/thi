@@ -1,6 +1,6 @@
 <?php
 require_once '../actions/product/show_action.php';
-
+$base = '/dethitotnghiep1';
 ob_start();
 
 ?>
@@ -9,7 +9,7 @@ ob_start();
 
 <div class="flex">
     <div class="item-29">
-        <img src="/baitap-mau/uploads/<?= $product['image'] ?>" alt="Avatar" class="image">
+        <img src="<?=$base?>/uploads/<?= $product['image'] ?>" alt="Avatar" class="image">
     </div>
 
     <section class="item-70" class="cards">

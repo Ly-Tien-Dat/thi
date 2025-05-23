@@ -1,6 +1,6 @@
 <?php
 require_once '../actions/product/list_action.php';
-
+$base = '/dethitotnghiep1';
 ob_start();
 ?>
 
@@ -21,14 +21,14 @@ ob_start();
     <?php foreach ($products as $k => $product) { ?>
         <tr>
             <td><?= ++$k ?></td>
-            <td><img src="/baitap-mau/uploads/<?= $product['image'] ?>" alt="Ảnh sản phẩm" class="avatar"></td>
+            <td><img src="<?=$base?>/uploads/<?= $product['image'] ?>" alt="Ảnh sản phẩm" class="avatar"></td>
             <td><?= $product['name'] ?></td>
             <td><?= $product['quantity'] ?></td>
             <td><?= $product['price_new'] ?></td>
             <td><?= $product['price_old'] ?></td>
             <td>
-                <a href="/baitap-mau/product/show.php?id=<?= $product['id'] ?>" class="ws-btn">Xem</a>
-                <form action="/baitap-mau/actions/product/delete_action.php" method="POST" style="display: inline">
+                <a href="<?=$base?>/product/show.php?id=<?= $product['id'] ?>" class="ws-btn">Xem</a>
+                <form action="<?=$base?>/actions/product/delete_action.php" method="POST" style="display: inline">
                     <input type="hidden" name="id" value="<?= $product['id'] ?>">
                     <button class="ws-btn" type="submit" style="margin: 0">Xóa</button>
                 </form>
