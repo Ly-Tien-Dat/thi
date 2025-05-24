@@ -5,6 +5,10 @@ $gender = [
     'female' => 'Nữ',
     'other' => 'Khác'
 ];
+$role = [
+    'admin' => 'Quản trị',
+    'customer' => 'Khách hàng'
+];
 ob_start();
 ?>
 

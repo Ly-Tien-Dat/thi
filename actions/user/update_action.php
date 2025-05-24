@@ -11,7 +11,8 @@ function updateAction($pdo)
             username = :username, 
             phone=:phone, 
             gender =:gender,
-            email=:email
+            email=:email,
+            role=:role
             WHERE id=:id;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
@@ -21,6 +22,7 @@ function updateAction($pdo)
             ':phone' => $_POST['phone'],
             ':gender' => $_POST['gender'],
             ':email' => $_POST['email'],
+            ':role' => $_POST['role'],
         ]);
         $base = '/dethitotnghiep1';
         // Kiểm tra số dòng bị ảnh hưởng

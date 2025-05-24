@@ -16,6 +16,16 @@
 <?php endif; ?>
 
 <div class="item mb-10">
+    <label for="role">Quyền</label>
+    <select name="role" id="role">
+        <?php foreach ($role as $k => $v): ?>
+            <option value="<?= $k ?>" <?= isset($user['role']) ? ($k == $user['role'] ? 'selected' : '') : '' ?>><?= $v ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+<div class="item mb-10">
     <label for="gender">Giới tính</label>
     <select name="gender" id="gender">
         <?php foreach ($gender as $k => $v): ?>

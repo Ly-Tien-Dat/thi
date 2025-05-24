@@ -8,7 +8,7 @@ function loginAction($pdo) {
         $username = $_POST['username'];
     
         // chuẩn bị truy vấn
-        $sql = "SELECT `id`,`name`,`password` FROM users  WHERE `username`=:username";
+        $sql = "SELECT `id`,`name`,`password`,`role` FROM users  WHERE `username`=:username";
         // truy vấn kết nối lên cơ sở dữ liệu
         $stmt = $pdo->prepare($sql);
         // set kiểu dữ liệu
@@ -27,10 +27,15 @@ function loginAction($pdo) {
         if (!password_verify($_POST['password'], $user['password'])) {
             die('Đăng nhập sai');
         }
-        var_dump('ádsad');
         // lưu phiên làm việc người dùng lên trình duyệt
         $_SESSION['user_id'] = $user['id'];
-        header('Location: ../index.php');
+        $_SESSION['role'] = $user['role'];
+
+        // $base = "/dethitotnghiep1";
+        if($user['role'] == 'admin'){
+            header("Location: ../index.php");
+        }
+        header("Location: ../home.php");
         exit;
     }
 }
