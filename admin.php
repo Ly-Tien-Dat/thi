@@ -8,10 +8,10 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
-//     header("Location: $base/home.php");
-//     exit;
-// }
+if (isset($_SESSION['role']) && $_SESSION['role'] != 'admin') {
+    header("Location: $base/home.php");
+    exit;
+}
 ?>
 <!doctype html>
 <html class="no-js" lang=""> <!--<![endif]-->
@@ -69,7 +69,7 @@ if (!isset($_SESSION['user_id'])) {
     <!-- /#header -->
     <!-- Content -->
     <div class="content">
-        <?= $content ?? '' ?>
+        <?= $content ?>
     
     </div>
     <!-- /.content -->

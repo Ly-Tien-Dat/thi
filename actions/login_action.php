@@ -31,12 +31,16 @@ function loginAction($pdo) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
 
-        // $base = "/dethitotnghiep1";
+
+        $base = "/dethitotnghiep1";
         if($user['role'] == 'admin'){
-            header("Location: ../index.php");
+            header("Location: $base/index.php");
+            exit;
+        }else{
+            header("Location: $base/home.php");
+            exit;
         }
-        header("Location: ../home.php");
-        exit;
+        
     }
 }
 
