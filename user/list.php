@@ -1,41 +1,62 @@
 <?php
-require_once '../actions/user/list_action.php';
-$base = '/dethitotnghiep1';
-$gender = [
-    'male' => 'Nam',
-    'female' => 'Nữ',
-    'other'  => 'Khác'
-];
-ob_start();
+require_once 'database.php';
+
+if (isset($_POST) && count($_POST) > 0) {
+    $id = $_POST['id'];
+    $sql = "DELETE FROM users WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':id' => $id
+    ]);
+    if ($stmt->rowCount() > 0) {
+        header("Location: /webmypham/admin.php");
+        exit;
+    } else {
+        die("Xóa người dùng bị lỗi");
+    }
+} else {
+    $sql = "SELECT * FROM users";
+    $stmp = $pdo->prepare($sql);
+    $stmp->execute();
+    $users = $stmp->fetchAll();
+
+    $role = [
+        'admin' => 'Quản trị',
+        'customer' => 'Khách hàng'
+    ];
+}
+
 ?>
 
 <h1 class="title mb-10"><b>Danh sách người dùng</b></h1>
 <div class="mb-10">
-    <a href="create.php" class="ws-btn mb-2">Thêm mới</a>
+    <a href="user/create.php" class="btn-ct">Thêm mới</a>
 </div>
-<table class="my_table">
+<table class="my_table" border="1" cellspacing="0" cellpadding="10" style="width: 100%;">
     <tr>
         <th>STT</th>
         <th>Tên Người dùng</th>
         <th>Tên đăng nhập</th>
-        <th>Giới tính</th>
-        <th>Số điện thoại</th>
-        <th>Email</th>
-        <th>Thao tác</th>
+        <th>Mật khẩu</th>
+        <th>Quyền</th>
+        <th>Hành động</th>
     </tr>
+
+
     <?php foreach ($users as $k => $user) { ?>
         <tr>
             <td><?= ++$k ?></td>
             <td><?= $user['name'] ?></td>
             <td><?= $user['username'] ?></td>
-            <td><?= $gender[$user['gender']] ?></td>
-            <td><?= $user['phone'] ?></td>
-            <td><?= $user['email'] ?></td>
+            <td><?= $user['password'] ?></td>
+            <td><?= $role[$user['role']] ?></td>
             <td>
-                <a href="<?=$base?>/user/edit.php?id=<?= $user['id'] ?>" class="ws-btn">Sửa</a>
-                <form action="<?=$base?>/actions/user/delete_action.php" method="POST" style="display: inline">
+                <!-- Nút sửa -->
+                <a href="/webmypham/user/edit.php?id=<?= $user['id'] ?>" class="btn-ct">Sửa</a>
+                <!-- Nút xóa -->
+                <form action="" method="POST" style="display: inline">
                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
-                    <button class="ws-btn" type="submit" style="margin: 0">Xóa</button>
+                    <button class="btn-ct" type="submit" style="margin: 0" onclick="return confirmDelete()">Xóa</button>
                 </form>
             </td>
         </tr>
@@ -44,8 +65,10 @@ ob_start();
 
 </table>
 
-<?php
-$content = ob_get_clean();
-
-include '../admin.php';
-?>
+<script>
+function confirmDelete() {
+  if(!confirm("Bạn có muốn xóa!")){
+    return false; // Quan trọng để chặn hoàn toàn
+  }
+}
+</script>

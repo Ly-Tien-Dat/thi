@@ -1,14 +1,40 @@
 <?php
-$base = '/dethitotnghiep1';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
-    if ($_SESSION['role'] == 'admin') {
-        header("Location: $base/index.php");
+// Khởi tạo phiên làm việc
+session_start();
+require_once('database.php');
+
+if (isset($_POST) && count($_POST) > 0) {
+    $username = $_POST['username'];
+
+    $password = $_POST['password'];
+    // chuẩn bị truy vấn
+    $sql = "SELECT `id`,`name`,`password`,`role` FROM users  WHERE `username`=:username";
+    // truy vấn kết nối lên cơ sở dữ liệu
+    $stmt = $pdo->prepare($sql);
+    // set kiểu dữ liệu
+    // $stmt->bind_param("s", $username);
+    $stmt->execute([
+        'username' => $username,
+    ]);
+
+    // Lấy kết quả
+    $user = $stmt->fetch();
+
+    // Mật khẩu không trùng khớp
+    if ($user && $_POST['password'] != $user['password']) {
+        die('Đăng nhập sai');
+    }
+
+    // lưu phiên làm việc người dùng lên trình duyệt
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['role'] = $user['role'];
+
+    //Chuyển hướng trang
+    if ($user['role'] == 'admin') {
+        header("Location: /webmypham/admin.php");
         exit;
     } else {
-        header("Location: $base/home.php");
+        header("Location: /webmypham/index.php");
         exit;
     }
 }
@@ -27,13 +53,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
     <link rel="stylesheet" type="text/css" href="css/opensans-font.css">
     <link rel="stylesheet" type="text/css" href="fonts/line-awesome/css/line-awesome.min.css">
     <!-- Main Style Css -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body class="form-v4">
     <div class="page-content">
         <div class="form-v4-content">
-            <form class="form-detail" action="actions/login_action.php" method="post" id="myform">
+            <form class="form-detail" action="" method="post" id="myform">
                 <h2>
                     <center>ĐĂNG NHẬP</center>
                 </h2>
@@ -41,17 +67,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['role'])) {
                     <label for="name">Tài khoản</label>
                     <input type="text" name="username" id="username" class="input-text">
                 </div>
-                <div class="form-row  ">
+                <div class="form-row">
                     <label for="password">Mật khẩu</label>
                     <input type="password" name="password" id="password" class="input-text" required>
                 </div>
                 <div class="form-row-last">
                     <input type="submit" name="login" class="register" value="Đăng nhập">
-                    <p>Chưa có tài khoản vui lòng <a href="register.php">Đăng ký</a></p>
                 </div>
             </form>
         </div>
     </div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
