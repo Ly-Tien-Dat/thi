@@ -1,6 +1,4 @@
 <?php
-// Khởi tạo phiên làm việc
-session_start();
 require_once('database.php');
 
 if (isset($_POST) && count($_POST) > 0) {
@@ -24,10 +22,6 @@ if (isset($_POST) && count($_POST) > 0) {
     if ($user && $_POST['password'] != $user['password']) {
         die('Đăng nhập sai');
     }
-
-    // lưu phiên làm việc người dùng lên trình duyệt
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['role'] = $user['role'];
 
     //Chuyển hướng trang
     if ($user['role'] == 'admin') {

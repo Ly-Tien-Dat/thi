@@ -1,5 +1,5 @@
 <?php
-require_once '../database.php';
+require_once 'database.php';
 
 if (isset($_POST) && count($_POST) > 0) {
     $sql =
@@ -14,7 +14,7 @@ VALUES (:name, :username, :password, :role)";
     ]);
     // Kiểm tra số dòng bị ảnh hưởng
     if ($stmt->rowCount() > 0) {
-        header("Location: /webmypham/admin.php");
+        header("Location: ./admin.php");
         exit;
     } else {
         die("Đăng ký không thành công");
@@ -68,5 +68,5 @@ ob_start();
 <?php
 $content = ob_get_clean();
 
-include '../admin.php';
+include 'admin.php';
 ?>

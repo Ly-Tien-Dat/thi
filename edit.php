@@ -1,5 +1,5 @@
 <?php
-require_once '../database.php';
+require_once 'database.php';
 
 if (isset($_POST) && count($_POST) > 0) {
     $sql =
@@ -83,5 +83,5 @@ ob_start();
 <?php
 $content = ob_get_clean();
 
-include '../admin.php';
+include 'admin.php';
 ?>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/webmypham/css/style.css">
-    <link rel="stylesheet" href="/webmypham/font/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./font/fontawesome-free-5.15.4-web/css/all.min.css">
     <!-- <link rel="stylesheet" href="css/table.css"> -->
 </head>
 
@@ -30,7 +30,7 @@
             <!--Phần tìm kiếm-->
             <div class="header-search">
                 <div class="header__logo">
-                    <img src="/webmypham/images/logo.png" alt="">
+                    <img src="./images/logo.png" alt="">
                 </div>
                 <div class="header__search-text">
                     <input class="item" type="text" placeholder="Tìm kiếm">
@@ -73,7 +73,7 @@
                 </ul>
             </div>
             <div class="banner">
-                <img src="/webmypham/images/banner.webp" alt="">
+                <img src="./images/banner.webp" alt="">
             </div>
         </div>
         <!--Phần thân-->
@@ -82,7 +82,7 @@
             if (isset($content)) {
                 echo $content;
             } else {
-                include 'user/list.php';
+                include 'list.php';
             }
             ?>
             <!--Tin tức & Sự kiện-->
@@ -90,17 +90,17 @@
             <hr>
             <div class="new">
                 <div class="content13">
-                    <img src="/webmypham/images/6096652077f59-nhung-loai-kem-chong-lao-hoa-tot-nhat.jpg">
+                    <img src="./images/6096652077f59-nhung-loai-kem-chong-lao-hoa-tot-nhat.jpg">
                     <h5>Top 3 sản phẩm kem dưỡng da mắt bán chạy nhất Nhật Bản</h5>
                     <p class="date">15/08/2023</p>
                 </div>
                 <div class="content13">
-                    <img src="/webmypham/images/37.png">
+                    <img src="./images/37.png">
                     <h5>Khuyến mại giảm giá sập sàn lên tới 70% các sản phẩm của Vichy</h5>
                     <p class="date">16/08/2023</p>
                 </div>
                 <div class="content13">
-                    <img src="/webmypham/images/pjimage-23.jpg">
+                    <img src="./images/pjimage-23.jpg">
                     <h5>Nước hoa Hàn mê mẩn: Yoona dùng mùi nhẹ nhàng mà sang trọng</h5>
                     <p class="date">15/08/2023</p>
                 </div>
@@ -110,7 +110,7 @@
         <!--Phần footer-->
         <footer class="footer">
             <div class="footer1">
-                <img src="/webmypham/images/logo.png" alt="">
+                <img src="./images/logo.png" alt="">
                 <p>Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCM - Công Ty Cổ Phần Hercometic - 62 Lê Lợi, Quận 1, TP. HCM, Việt Nam Hercometic nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ Thống Hercometic trên toàn quốc.</p>
             </div>
             <div class="footer1">

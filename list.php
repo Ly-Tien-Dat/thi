@@ -9,7 +9,7 @@ if (isset($_POST) && count($_POST) > 0) {
         ':id' => $id
     ]);
     if ($stmt->rowCount() > 0) {
-        header("Location: /webmypham/admin.php");
+        header("Location: ./admin.php");
         exit;
     } else {
         die("Xóa người dùng bị lỗi");
@@ -28,9 +28,9 @@ if (isset($_POST) && count($_POST) > 0) {
 
 ?>
 
-<h1 class="title mb-10"><b>Danh sách người dùng</b></h1>
-<div class="mb-10">
-    <a href="user/create.php" class="btn-ct">Thêm mới</a>
+<h1 class="mb10 tmnd">Sửa người dùng</h1>
+<div class="mb10">
+    <a href="create.php" class="btn-ct">Thêm mới</a>
 </div>
 <table class="my_table" border="1" cellspacing="0" cellpadding="10" style="width: 100%;">
     <tr>
@@ -52,7 +52,7 @@ if (isset($_POST) && count($_POST) > 0) {
             <td><?= $role[$user['role']] ?></td>
             <td>
                 <!-- Nút sửa -->
-                <a href="/webmypham/user/edit.php?id=<?= $user['id'] ?>" class="btn-ct">Sửa</a>
+                <a href="./edit.php?id=<?= $user['id'] ?>" class="btn-ct">Sửa</a>
                 <!-- Nút xóa -->
                 <form action="" method="POST" style="display: inline">
                     <input type="hidden" name="id" value="<?= $user['id'] ?>">
