@@ -1,76 +1,33 @@
 <?php
-$base = '/dethitotnghiep1';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (!isset($_SESSION['user_id'])) {
-    header("Location: $base/login.php");
-    exit;
-}
+session_start();
+include 'db.php';
+
+// if(!isset($_SESSION['username']) || $_SESSION['role'] != 'admin'){
+//     die("ban khong co quyen truy cap");
+// }
+
+$result = $conn->query("SELECT * FROM users");
 ?>
-<!doctype html>
-<html class="no-js" lang=""> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
-    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
- 
-    <link rel="stylesheet" href="<?=$base?>/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="<?=$base?>/css/styles.css">
-    <link rel="stylesheet" href="<?=$base?>/css/table.css">
-    <link rel="stylesheet" href="<?=$base?>/css/form.css">
-</head>
-
-<body>
-<!-- Left Panel -->
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Trang chủ </a>
-                </li>
-                <li>
-                    <a href="<?=$base?>/user/list.php"> <i class="menu-icon ti-bag"></i>Quản lý người dùng</a>
-                </li>
-                <li>
-                    <a href="<?=$base?>/actions/logout_action.php"> <i class="menu-icon ti-user"></i>Đăng xuất</a>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-</aside>
-<!-- /#left-panel -->
-<!-- Right Panel -->
-<div id="right-panel" class="right-panel">
-    <!-- Header-->
-    <header id="header" class="header">
-        <div class="top-left">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="<?=$base?>/imgs/logo.png" alt="Logo"></a>
-                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-            </div>
-        </div>
-    </header>
-    <!-- /#header -->
-    <!-- Content -->
-    <div class="content">
-        <?= $content ?>
-    
-    </div>
-    <!-- /.content -->
-    <div class="clearfix"></div>
-</div>
-<!-- /#right-panel -->
-
-</body>
-</html>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Role</th>
+    </tr>
+    <?php while ($row= $result->fetch_assoc()): ?>
+        <tr>
+            <td><?= $row['id'];?></td>
+            <td><?= $row['username'];?></td>
+            <td><?= $row['name'];?></td>
+            <td><?= $row['password'];?></td>
+            <td><?= $row['role'];?></td>
+            <td>
+                <a href="edit.php?id=<?=$row['id'];?>">Sua</a>
+                <a href=""></a>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</table>
