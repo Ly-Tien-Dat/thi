@@ -30,16 +30,21 @@ $result = $conn->query("SELECT * FROM users");
         <th>Role</th>
     </tr>
     <?php while ($row = $result->fetch_assoc()): ?>
-        <tr>
-            <td><?= $row['id']; ?></td>
-            <td><?= $row['username']; ?></td>
-            <td><?= $row['name']; ?></td>
-            <td><?= $row['password']; ?></td>
-            <td><?= $row['role']; ?></td>
+        <form method="post" action="edit.php">
+            <td><?php echo $row['id']; ?><input type="hidden" name="id" value="<?php echo $row['id']; ?>"></td>
+            <td><input type="text" name="username" value="<?php echo $row['username']; ?>"></td>
+            <td><input type="text" name="name" value="<?php echo $row['name']; ?>"></td>
+            <td><input type="text" name="password" value="<?php echo $row['password']; ?>"></td>
             <td>
-                <a href="edit.php?id=<?= $row['id']; ?>">Sua</a>
-                <a href=""></a>
+                <select name="role">
+                    <option value="user" <?php if ($row['role'] == 'user') echo 'selected'; ?>>User</option>
+                    <option value="admin" <?php if ($row['role'] == 'admin') echo 'selected'; ?>>Admin</option>
+                </select>
             </td>
-        </tr>
+            <td>
+                <button type="submit" name="edit_user">Sửa</button>
+                <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Xóa user này?');">Xóa</a>
+            </td>
+        </form>
     <?php endwhile; ?>
 </table>
